@@ -1,8 +1,9 @@
 
-const Home = ()=>{
+
+const Home = () => {
     return (
         <>
-        <h1 className="w-full h-screen flex justify-center items-center">Home page</h1>
+            <h1 className="h-screen flex justify-center items-center w-full">Home Page</h1>
         </>
     )
 }
