@@ -23,6 +23,7 @@ const RegisterUser = async (req, res) => {
 
     } catch (error) {
         console.log(`error in register part- controller  :: ${error}`)
+        return res.status(402).send("api error")
     }
     
 }
@@ -37,7 +38,14 @@ const LoginUser = async (req, res) => {
         if(checkUser){
             const checkPassword = await bcrypt.compare(password,checkUser.password);
             if(checkPassword){
-                return res.status(200).send("User login successfully")
+                const payload = {
+                    _id : checkUser._id,
+                    name : checkUser.name,
+                    email : checkUser.email, 
+                    phoneNumber : checkUser.phoneNumber 
+                }
+                const token = await checkUser.GenrateToken(payload);
+                return res.status(200).json({"token":token})
             }else{
                 return res.status(400).send("Check password and email")
             }

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import bcrypt from "bcrypt"
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 const UserShema = new mongoose.Schema({
     name:{
         type:String,
@@ -27,9 +28,20 @@ UserShema.pre("save", async function(next){
     next();
 })
 
+//create token 
+dotenv.config();
+UserShema.methods.GenrateToken = async function(payload){
+    try {
+        const token = await jwt.sign(payload,process.env.SECREATE_KEY,{ expiresIn: '20s' });
+        return token;
+        
+    } catch (error) {
+        console.log(`error in genrate token part- accountmodles  :: ${error}`)
+    }
+}
+
 const User = mongoose.model("airbunbUsers",UserShema);
 
 
-dotenv.config();
 
 export default User;
