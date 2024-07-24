@@ -32,7 +32,7 @@ UserShema.pre("save", async function(next){
 dotenv.config();
 UserShema.methods.GenrateToken = async function(payload){
     try {
-        const token = await jwt.sign(payload,process.env.SECREATE_KEY,{ expiresIn: '20s' });
+        const token = await jwt.sign(payload,process.env.SECREATE_KEY,{ expiresIn: '1d' });
         return token;
         
     } catch (error) {

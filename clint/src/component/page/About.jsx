@@ -1,6 +1,9 @@
 import { Link, useParams } from "react-router-dom";
 import defaultImage from"../../img/default_image.png"
+import { UseAuth } from "../../Auth";
+import { useEffect } from "react";
 const About = () => {
+    const { LoggoutUser } = UseAuth();
     let { subpage } = useParams();
     if (subpage === undefined) {
         subpage = "profile";
@@ -13,6 +16,9 @@ const About = () => {
         }
         return classes;
     }
+    useEffect(()=>{
+
+    },[LoggoutUser])
     return (
         <>
             <div className="w-full h-fit  px-4 py-5    mt-24 flex gap-3 justify-center font-bold  items-center">
@@ -38,7 +44,7 @@ const About = () => {
 
                             </h1>
                         </div>
-                        <button className="bg-red-500 px-28 py-2 rounded-full text-white">Logout User</button>
+                        <button className="bg-red-500 px-28 py-2 rounded-full text-white" onClick={LoggoutUser}>Logout User</button>
                     </div>
                 )
             }
