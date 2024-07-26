@@ -13,7 +13,7 @@ const RoutePage = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/about/:subpage?" element={<About />} />
-
+                <Route path="/about/:subpage/:action" element={<About />} />
 
                 <Route path="*" element={<Error />} />
             </Routes>

@@ -19,3 +19,6 @@ body::-webkit-scrollbar-thumb {
     border-radius: 20px;
 }
 
+.borderDefault{
+    border: 1px solid rgb(137, 135, 135);
+}

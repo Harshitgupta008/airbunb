@@ -1,9 +1,10 @@
 import User from "../Modles/account.modles.js";
 import bcrypt from "bcrypt";
+
 const Checkget = (req, res) => {
     res.send("done controller")
 }
-
+//Register User                                                                                     Register User 
 const RegisterUser = async (req, res) => {
     const { name, email, phoneNumber, password } = req.body;
     if (!name || !email || !phoneNumber || !password) {
@@ -20,7 +21,7 @@ const RegisterUser = async (req, res) => {
             await newUser.save();
             return res.status(200).send("User data submited");
         }
-
+        
     } catch (error) {
         console.log(`error in register part- controller  :: ${error}`)
         return res.status(402).send("api error")
@@ -28,6 +29,7 @@ const RegisterUser = async (req, res) => {
     
 }
 
+//Login User                                                                                       Login User 
 const LoginUser = async (req, res) => {
     const { email, password } = req.body;
     if ( !email || !password) {
@@ -56,7 +58,17 @@ const LoginUser = async (req, res) => {
     } catch (error) {
         console.log(`error in login part- controller  :: ${error}`)
     }
-
+    
 }
 
-export { Checkget, RegisterUser, LoginUser };
+//Get User Authentation                                                                                       Get User Authentation 
+const GetUser = async (req,res)=>{
+    try {
+        const data =  await req.user;
+        return res.status(200).json({data});
+    } catch (error) {
+        console.log(`error in GetUSer controller :: ${error}`)
+    }
+}
+
+export { Checkget, RegisterUser, LoginUser, GetUser };

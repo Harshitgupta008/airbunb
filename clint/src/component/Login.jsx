@@ -33,7 +33,7 @@ const Login = () => {
                 // console.log(fixtoken.token)
                 GenrateToken(fixtoken.token);
             }else if(checkUser.status === 400){
-                return toast.warn("Check your email and password");
+                return toast.error("Check your email and password");
             }
         }catch(error){
             toast.error("Error/api");

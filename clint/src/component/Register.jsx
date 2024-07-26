@@ -49,8 +49,8 @@ const Register = () => {
     return (
         <>
 
-            <div class="max-w-md mx-auto bg-white px-8 pt-6 mt-20">
-                <h2 class="text-center text-2xl font-bold mb-6 text-red-500">Sign Up</h2>
+            <div className="max-w-md mx-auto bg-white px-8 pt-6 mt-20">
+                <h2 className="text-center text-2xl font-bold mb-6 text-red-500">Sign Up</h2>
                 <form className="flex flex-col gap-3" onSubmit={Submitdata}>
                     <div className="flex flex-col gap-1">
                         <label htmlFor="name" className="mx-3">Name</label>

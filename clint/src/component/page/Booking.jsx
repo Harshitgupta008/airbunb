@@ -3,7 +3,7 @@
 const Booking = () => {
     return (
         <>
-            <h1 className="h-screen flex justify-center items-center w-full">Booking Page</h1>
+            <h1 className="h-52 flex justify-center items-center w-full">Booking Page</h1>
         </>
     )
 }
