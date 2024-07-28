@@ -12,17 +12,7 @@ const PlaceShema = new mongoose.Schema({
         type: String,
         require: true
     },
-    photo: [
-        {
-            img_url:{
-                type:String,
-            },
-            cloud_id:{
-                type:String
-            }
-
-        }
-    ],
+    photo: [{}],
     description: {
         type: String,
         require: true
@@ -43,9 +33,10 @@ const PlaceShema = new mongoose.Schema({
         type: Number,
         require:true
     },
-    // price: {
-    //     type: Number
-    // },
+    price: {
+        type: Number,
+        require:true
+    },
 }, { timestamps: true })
 
 const UserPlace = mongoose.model("place", PlaceShema);

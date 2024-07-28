@@ -4,18 +4,31 @@ import About from "../component/page/About.jsx";
 import Login from "../component/Login.jsx";
 import Register from "../component/Register.jsx";
 import Error from "../component/Error.jsx";
+import { UseAuth } from "../Auth.jsx";
 const RoutePage = () => {
+    const { isLoggedIn } = UseAuth();
     return (
         <>
             <Routes >
-                <Route path="/" element={<Home />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/about/:subpage?" element={<About />} />
-                <Route path="/about/:subpage/:action" element={<About />} />
+                {
+                    !isLoggedIn ?
+                        <>
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
 
-                <Route path="*" element={<Error />} />
+                            <Route path="*" element={<Error />} />
+
+                        </>
+                        :
+                        <>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/home" element={<Home />} />
+                            <Route path="/about/:subpage?" element={<About />} />
+                            <Route path="/about/:subpage/:action" element={<About />} />
+
+                            <Route path="*" element={<Error />} />
+                        </>
+                }
             </Routes>
 
         </>
