@@ -3,40 +3,51 @@ const PlaceShema = new mongoose.Schema({
 
     owner: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        require: true
     },
     title: {
         type: String,
         require: true
     },
-    Address: {
+    address: {
         type: String,
         require: true
     },
-    photo: [String],
-    descprition: {
+    photo: [
+        {
+            img_url:{
+                type:String,
+            },
+            cloud_id:{
+                type:String
+            }
+
+        }
+    ],
+    description: {
         type: String,
         require: true
     },
-    extrainfo: {
+    extraInfo: {
         type: String,
+        require:true
     },
     checkIn: {
-        type: Number
+        type: String,
+        require:true
     },
     checkOut: {
-        type: Number
+        type: String,
+        require:true
     },
     maxGuests: {
-        type: Number
+        type: Number,
+        require:true
     },
-    price: {
-        type: Number
-    },
+    // price: {
+    //     type: Number
+    // },
 }, { timestamps: true })
+
 const UserPlace = mongoose.model("place", PlaceShema);
-
-
 
 export default UserPlace;

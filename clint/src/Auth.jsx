@@ -41,7 +41,7 @@ export const AuthProvider = ({children})=>{
     useEffect(()=>{
         GetUserAuth();
     },[token, isLoggedIn])
-    return <Authcontext.Provider value={{isLoggedIn, GenrateToken, LoggoutUser, userData}} >
+    return <Authcontext.Provider value={{isLoggedIn, GenrateToken, LoggoutUser, userData, token}} >
         {children}
     </Authcontext.Provider>
 }
