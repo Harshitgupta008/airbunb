@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const Authentation = async( req, res, next)=>{
-    const token = req.header("Authorization");
+    const token = await req.header("Authorization");
     try {
         if(!token){
             return res.status(400).send("token not found")

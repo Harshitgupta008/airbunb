@@ -28,6 +28,7 @@ const Register = () => {
                 })
                 if (newUser.status === 200) {
                     toast.success("User Registered Successfully");
+                    Navigate("/login")
                 } else if (newUser.status === 402) {
                     toast.error("Server Error");
                 } else if (newUser.status === 400) {
