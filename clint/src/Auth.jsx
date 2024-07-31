@@ -37,10 +37,11 @@ export const AuthProvider = ({children})=>{
             console.log(`error in api calling in getAuthUSer - Auth.jsx :: ${error}`)
         }
     }
+    
 
     useEffect(()=>{
         GetUserAuth();
-    },[token, isLoggedIn])
+    },[token, isLoggedIn, userData])
     return <Authcontext.Provider value={{isLoggedIn, GenrateToken, LoggoutUser, userData, token}} >
         {children}
     </Authcontext.Provider>

@@ -1,5 +1,7 @@
-import { useState } from "react";
+import {  useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { UseAuth } from "../../Auth";
 const EditProfile = () => {
     const { userData } = UseAuth();
@@ -15,10 +17,33 @@ const EditProfile = () => {
         setData({ ...data, [name]: value })
     }
 
-    const Updateprofile = (e) => {
+    const Updateprofile = async (e) => {
         e.preventDefault();
-        return Nevigate("/about/profile");
+        const { name,email,phoneNumber } = data;
+        if( !name || !email || !phoneNumber){
+            return toast.warn("All field are mendetary")
+        }
+        try {
+            const response = await fetch(`/api/UpdateUser/${userData._id}`,{
+                method:"PATCH",
+                headers:{
+                    "content-type" : "application/json"
+                },
+                body:JSON.stringify(data),
+            });
+            if(response.ok){
+                toast.success("Update your data");
+                return Nevigate("/about/profile");
+            }else if(response.status === 400){
+                return toast.error("user not find check after some time")
+            }
+        } catch (error) {
+            console.log("error in update user :: "+error);
+            return toast.error("fetech error wait");
+        }
     }
+    
+   
     return (
         <>
             <div className="max-w-md mx-auto bg-white px-8 pt-6 pb-8 mt-10">
@@ -30,7 +55,7 @@ const EditProfile = () => {
                     </div>
                     <div className="flex flex-col gap-1">
                         <label htmlFor="email" className="mx-3">Email</label>
-                        <input type="email" id="email" name="email" value={data.email} onChange={handleInput} placeholder="Enter Your email" className="border-2 border-gray-300 px-4 py-3 rounded-full w-full" />
+                        <input type="email" id="email" name="email" value={data.email} onChange={handleInput} placeholder="Enter Your email" className="border-2 border-gray-300 px-4 py-3 rounded-full w-full text-gray-400" disabled />
                     </div>
                     <div className="flex flex-col gap-1">
                         <label htmlFor="number" className="mx-3">Number</label>

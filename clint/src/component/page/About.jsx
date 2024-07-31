@@ -55,8 +55,8 @@ const About = () => {
                                                         <img src={defaultImage} alt="display-picture" className="h-40 w-40 rounded-full" />
                                                     </div>
                                                     <div className="flex justify-center flex-col items-center gap-4">
-                                                        <div className=" w-full h-fit py-1 flex px-4  items-center flex-wrap gap-5 ">
-                                                            <h1>Name :</h1>  <h1>{userData.name}</h1>
+                                                        <div className=" w-full h-fit py-1 flex px-4  items-center flex-wrap gap-5 justify-center font-bold text-lg text-red-500">
+                                                           <h1>{userData.name}</h1>
                                                         </div>
                                                         <div className=" w-full h-fit py-1 flex px-4  items-center flex-wrap gap-5">
                                                             <h1>Email :</h1>  <h1>{userData.email}</h1>
