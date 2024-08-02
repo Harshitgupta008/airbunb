@@ -25,7 +25,7 @@ const UserPlaceDetail = () => {
     }, [action]);
 
     if (!placeDetail) {
-        return <h1>Loading...</h1>;
+        return <span className="loader"></span>;
     }
 
     return (
@@ -71,7 +71,7 @@ const UserPlaceDetail = () => {
                     <p className="text-gray-700 ">{placeDetail.address}</p>
                 </div>
             </div>
-            <div className="text-center w-full h-fit mt-10">
+            <div className="text-center w-full h-fit mt-10 my-5">
                 <p className="text-gray-700 mt-4"><span className="font-bold">ExtraInfo : </span>{placeDetail.extraInfo}</p>
             </div>
         </div>

@@ -13,6 +13,7 @@ const RoutePage = () => {
                 {
                     !isLoggedIn ?
                         <>
+                            <Route path="/" element={<Login />} />
                             <Route path="/login" element={<Login />} />
                             <Route path="/register" element={<Register />} />
 

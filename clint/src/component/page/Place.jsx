@@ -33,6 +33,9 @@ const Place = () => {
     useEffect(() => {
         GetPlace();
     }, [userPlace])
+    if (!userPlace || !GetPlace) {
+        return <span className="loader"></span>
+    }
 
     return (
         <>

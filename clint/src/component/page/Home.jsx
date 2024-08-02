@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-
 const Home = () => {
     const [placeDetail, setPlaceDetail] = useState([]);
 
@@ -19,6 +18,9 @@ const Home = () => {
         }
         fetchPlaceDetail();
     }, [placeDetail]);
+    if(!placeDetail){
+        return <span className="loader"></span>
+    }
     return (
         <>
             <div className="flex flex-wrap gap-4 mt-28 justify-center items-center">
@@ -54,6 +56,7 @@ const Home = () => {
                     })
                 }
             </div>
+            
         </>
     )
 }

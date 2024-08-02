@@ -2,14 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+body {
     overflow-y: auto;
     font-family: "Poppins", sans-serif;
 }
-body::-webkit-scrollbar{
+
+body::-webkit-scrollbar {
     display: block;
     width: 8px;
 }
+
 body::-webkit-scrollbar-track {
     background: transparent;
 }
@@ -19,6 +21,48 @@ body::-webkit-scrollbar-thumb {
     border-radius: 20px;
 }
 
-.borderDefault{
+.borderDefault {
     border: 1px solid rgb(137, 135, 135);
+}
+
+/* loader */
+.loader {
+    transform: translateZ(1px);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader:after {
+    content: '';
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    margin: 8px;
+    border-radius: 50%;
+    background: #f80000;
+    animation: coin-flip 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+@keyframes coin-flip {
+
+    0%,
+    100% {
+        animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+    }
+
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    50% {
+        transform: rotateY(1800deg);
+        animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    }
+
+    100% {
+        transform: rotateY(3600deg);
+    }
 }
