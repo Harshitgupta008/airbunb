@@ -23,7 +23,7 @@ const Home = () => {
     }
     return (
         <>
-            <div className="flex flex-wrap gap-4 mt-28 justify-center items-center">
+            <div className="flex flex-wrap gap-4 mt-28 mb-20 justify-center items-center">
                 {
                     placeDetail.map((place, i) => {
                         return (

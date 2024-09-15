@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Back from "../../img/sideArrow.jpeg"
+import CreateBooking from "./CreateBooking";
 const UserPlaceDetail = () => {
     const { action } = useParams();
     const [placeDetail, setPlaceDetail] = useState(null);
@@ -40,7 +41,7 @@ const UserPlaceDetail = () => {
             <div className="h-fit w-full px-5 flex  overflow-scroll gap-5 overflow-y-hidden overflow-x-auto">
                 {
                     placeDetail.photo.map((photo, i) => (
-                        <img src={photo.url} alt="image" className="w-1/2 h-72 rounded mt-4" key={i}
+                        <img src={photo.url} alt="image" className="w-96 h-48 rounded mt-4" key={i}
                         />
                     ))
                 }
@@ -74,6 +75,8 @@ const UserPlaceDetail = () => {
             <div className="text-center w-full h-fit mt-10 my-5">
                 <p className="text-gray-700 mt-4"><span className="font-bold">ExtraInfo : </span>{placeDetail.extraInfo}</p>
             </div>
+
+            <CreateBooking/>
         </div>
 
     );
