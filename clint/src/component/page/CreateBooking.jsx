@@ -1,17 +1,46 @@
 import { useState } from "react";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { UseAuth } from "../../Auth";
 import { useParams } from "react-router-dom";
 const CreateBooking = () => {
     const { userData } = UseAuth();
     const { action } = useParams();
+    const [coustmer, setCoustmer] = useState(userData);
+    const [placeid, setPlaceid] = useState(action);
     const [bookData, setBookData] = useState({ name:"", number:"", maxguest:"",checkin:"" })
     const HandeleInput = (e)=>{
         const {name, value} = e.target;
         setBookData({...bookData,[name]:value})
     }
-    const BookSlot = (e)=>{
+    const BookSlot = async (e)=>{
         e.preventDefault();
-        setBookData({ name:"", number:"", maxguest:"",checkin:"" })
+        const {name, number, maxguest, checkin} = bookData;
+
+        if(!name || !number || !maxguest || !checkin){
+            return toast.warn("All field are mendotry");
+        }
+        try {
+            const response = await fetch("/api/bookroom",{
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify({
+                    coustmer, placeid, name, number, maxguest, checkin
+                })
+            })
+            toast.success("wait bokking process...");
+            if(response.ok){
+                setBookData({ name:"", number:"", maxguest:"",checkin:"" })
+                return toast.success("Booking successfull");
+            }else{
+                return toast.error("some problem book after some time");
+            }
+        } catch (error) {
+            return toast.error("Error/api#*");
+        }
+        
     }
     return (
         <>
