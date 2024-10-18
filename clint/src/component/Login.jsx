@@ -32,7 +32,8 @@ const Login = () => {
                 const fixtoken = await checkUser.json();
                 // console.log(fixtoken.token)
                 GenrateToken(fixtoken.token);
-                return Navigate("/")
+                Navigate("/");
+                return location.reload();
             } else if (checkUser.status === 400) {
                 return toast.error("Check your email and password");
             }

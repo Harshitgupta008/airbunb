@@ -1,7 +1,7 @@
 import express from "express";
 import { Checkget, RegisterUser, LoginUser, GetUser, UpdateUser } from "../Controller/account.controller.js";
 import { newPlace, GetPlace, PlaceDetail, AllDetailPlace } from "../Controller/place.controller.js";
-import { BookRoom } from "../Controller/booking.controller.js";
+import { BookRoom, getAllBooking } from "../Controller/booking.controller.js";
 import Authentation from "../Middleware/authentation.middleware.js";
 import upload from "../Utils/imageUpload.utils.js";
 
@@ -24,5 +24,6 @@ router.route("/AllPlace").get(AllDetailPlace);
 
 // booking controller
 router.route("/bookroom").post(BookRoom);
+router.route("/getAllBooking/:coustmer").get(getAllBooking);
 
 export default router;
